@@ -15,9 +15,15 @@ export class RecipesComponent implements OnInit {
                 'https://i0.wp.com/www.foodvedam.com/wp-content/uploads/2014/11/Mutton-Biryani2.jpg?resize=650%2C488')
   ];
 
+  selectedRecipe: Recipe;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectRecipe(selectedRecipe: Recipe) {
+    this.selectedRecipe = selectedRecipe;
   }
 
 }
