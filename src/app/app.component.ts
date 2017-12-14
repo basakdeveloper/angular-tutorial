@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  selectedFeature = 'recipes'; // recipes or shopping-list
+
+  selectFeature(feature: string) {
+    this.selectedFeature = feature;
+  }
 }
