@@ -1,29 +1,24 @@
 import { Recipe } from './../models/recipe.model';
 import { Component, OnInit } from '@angular/core';
+import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.css']
+  styleUrls: ['./recipes.component.css'],
+  providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit {
-
-  recipes: Recipe[] = [
-    new Recipe('Tandoori Chicken', 'Tandoori Chicken',
-                'https://www.yummytummyaarthi.com/wp-content/uploads/2014/10/1-34.jpg'),
-    new Recipe('Mutton Biriyani', 'Mutton Biriyani',
-                'https://i0.wp.com/www.foodvedam.com/wp-content/uploads/2014/11/Mutton-Biryani2.jpg?resize=650%2C488')
-  ];
-
   selectedRecipe: Recipe;
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-  }
-
-  selectRecipe(selectedRecipe: Recipe) {
-    this.selectedRecipe = selectedRecipe;
+    this.recipeService.selectedRecipe.subscribe(
+      (recipe: Recipe) => {
+        this.selectedRecipe = recipe;
+      }
+    );
   }
 
 }
